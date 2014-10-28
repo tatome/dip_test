@@ -76,12 +76,10 @@ def dip(histogram=None, idxs=None):
         d_right, right_diffs = _touch_diffs_(left_part, right_part, right_touchpoints)
 
         if d_right > d_left:
-            dec = "right"
             xr = right_touchpoints[d_right == right_diffs][-1]
             xl = left_touchpoints[left_touchpoints <= xr][-1]
             d  = d_right
         else:
-            dec = "left"
             xl = left_touchpoints[d_left == left_diffs][0]
             xr = right_touchpoints[right_touchpoints >= xl][0]
             d  = d_left
