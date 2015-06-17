@@ -88,7 +88,8 @@ def dip(histogram=None, idxs=None):
         right_diff = np.abs(right_part[xr:]  - work_cdf[xr:] + work_histogram[xr:]).max()
 
         if d <= D or xr == 0 or xl == len(work_cdf):
-            return D/2, (cdf, idxs, left, left_part, right, right_part)
+            the_dip = max(np.abs(cdf[:len(left)] - left).max(), np.abs(cdf[-len(right)-1:-1] - right).max())
+            return the_dip/2, (cdf, idxs, left, left_part, right, right_part)
         else:
             D = max(D, left_diff, right_diff)
 
